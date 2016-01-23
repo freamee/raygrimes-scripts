@@ -1,0 +1,22 @@
+[font=verdana]Csácsá, kész lettem a /fish újrairásával, tudod amirõl beszéltünk.
+Próbálgattuk többen is a munkát, nem találtunk bugot, ha valami probléma lenne akkor javitsátok vagy irjatok. :/
+Ha bekerül akkor küldöm a pénzt. (kinek a bszére? azt majd ird le)
+
+Esetleg ha valamit túlzásnak tartotok akkor vegyétek ki belõle, és örülnék neki hogyha szólnátok is, mert tudni szeretnék róla, hogy mi az amivel túllõttem a "célon".
+
+# definek, változók, timerek létrehozása (mód elejére) http://pastebin.com/L4t4Etw5
+# enum, (dini mentéshez) | fontos hogy ne crasheljen a mód: scriptfiles mappába hozz létre egy Halak mappát!!! (C:\Users\Krisztián\Desktop\pawno\scriptfiles\Halak)
+http://pastebin.com/xdNM3xe0
+
+# onplayerconnect (betöltés) http://pastebin.com/L4Y0rcPb
+# onplayerdisconnect (mentés) http://pastebin.com/Qj7Z30cZ
+# a scriptet nem zcmdben irtam, ha jól tudom class módban old_commands.pwn alatt vannak az strcmp parancsok, tedd a /fish helyére az egészet szerintem. http://pastebin.com/7UzEEGN0
+# a timerek http://pastebin.com/GFyyqEGA
+
+Szólj hogyha kihagytam valamit, vagy nem sikerülne, vagy valami lenne.
+Õõ, bocs hogy lesz egy kis munkád, de valószinû hogy a régi horgászbot/csalikat kikéne venni a módból, mivel újra irtam ebben, diniben, és a santa marián lehet venni "Horgászbolt"nál.
+(PlayerInfo[playerid][pCsali], PlayerInfo[playerid][pHorgaszbot] -- ezeket kéne kigyilkolnod, vagy átirni a saját scriptemre ezeket. :/) 
+
+Ha úgy döntötök hogy mégsem kerülne be akkor kaphatnék egy értesitést?
+
+Na köszkösz, pacsi!
