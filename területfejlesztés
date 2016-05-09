@@ -1,0 +1,93 @@
+//============//           TERÜLET FEJLESZTÉS RENDSZER             //============//
+	//============//           RAY            //============//
+	//============//           2016.05.09             //============//
+	
+	//================== TERÜLET SZINTEK ======================
+	new lsgyarszint = 0;
+	new sfgyarszint = 0;
+	//================== TERÜLET SZINT ÁRAK ======================
+	new lsgyarmatiar = 50000; // 50k
+	new lsgyarpenzar = 15000000; // 15 millió
+	new lsgyarmuanyagar = 45;
+	//================== JELENLEGI CUCCOK A TERÜLETBEN ==============
+	new lsgyarmatibent = 0;
+	new lsgyarpenzbent = 0;
+	new lsgyarmuanyagbent = 0;
+	
+	#define MAXSZINT 10
+	
+	if(egyezik(cmd, "/terület"))
+	{
+		if(params < 1) return Msg(playerid, "/terület [fejlesztés / fejlesztésbe / infó / jelenlegi / bónuszok]");
+		if(egyezik(param[1], "fejlesztésbe") || egyezik(param[1], "fejlesztesbe"))
+		{
+			/*new Float:x, Float:y, Float:z;
+			new playapos = GetPlayerPos(playerid, x, y, z);*/
+			if(!PlayerToPoint(25.0, playerid, 2770.6802,-1628.3042,12.1775) &&
+			!PlayerToPoint(25.0, playerid, -2730.4705,73.9224,4.3359))
+			return Msg(playerid, "Nem vagy egyik terület közelében sem. (/terület helyek)");
+	
+			if(params < 2) return Msg(playerid, "/terület fejlesztésbe [lsgy, sfgy, sfdrog, lsdrog]");
+			
+			new mennyitbe = strval(param[4]);
+			//===================================== AL PARAM =============================
+			//===================================== AL PARAM =============================
+			
+			if(egyezik(param[2], "lsgy") || egyezik(param[2], "lsgyár"))
+			{
+				//===================================== AL PARAM =============================
+				//===================================== AL PARAM =============================
+				if(lsgyarszint >= MAXSZINT) return Msg(playerid, "Maximum 10-es területszint!");
+				if(params < 3) return Msg(playerid, "/terület fejlesztésbe lsgyár [mati / pénz / műanyag]");
+				
+				if(egyezik(param[3], "mati"))
+				{
+					if(params < 4) return Msg(playerid, "/terület fejlesztésbe lsgyár mati [mennyit]");
+					if(mennyitbe > PlayerInfo[playerid][pMats]) return Msg(playerid, COLOR_LIGHTRED, "Nincs ennyi mati nálad!");
+					new kulonbseg = lsgyarmatiar-lsgyarmatibent;
+					
+					if(mennyitbe > kulonbseg)
+					{
+						if(kulonbseg < 0) return Msg(playerid, "Fejleszthető a terület! (/terület fejlesztés)");
+						SendFormatMessage(playerid, COLOR_LIGHTRED, "[Terület]: Nincs szükség ennyi matira! (Szükséges: %ddb material)", kulonbseg);
+					}
+					
+					SendFormatMessage(playerid, COLOR_LIGHTGREEN, "[Terület]: Sikeresen beraktál %ddb materialt a területbe. (Material mennyiség: %ddb)", mennyitbe, lsgyarmatibent);
+					PlayerInfo[playerid][pMats] -= mennyitbe;
+					lsgyarmatibent += mennyitbe;
+				}
+				if(egyezik(param[3], "pénz") || egyezik(param[3], "penz"))
+				{
+					if(params < 4) return Msg(playerid, "/terület fejlesztésbe lsgyár pénz [mennyit]");
+					if(mennyitbe > PlayerInfo[playerid][pAccount]) return Msg(playerid, COLOR_LIGHTRED, "Nincs ennyi pénz nálad!");
+					new kulonbseg = lsgyarpenzar-lsgyarpenzbent;
+					
+					if(mennyitbe > kulonbseg)
+					{
+						if(kulonbseg < 0) return Msg(playerid, "Fejleszthető a terület! (/terület fejlesztés)");
+						SendFormatMessage(playerid, COLOR_LIGHTRED, "[Terület]: Nincs szükség ennyi pénzre! (Szükséges: %dFt)", kulonbseg);
+					}
+					
+					SendFormatMessage(playerid, COLOR_LIGHTGREEN, "[Terület]: Sikeresen beraktál %dFtot a területbe. (Pénz mennyiség: %dFt)", mennyitbe, lsgyarpenzbent);
+					PlayerInfo[playerid][pAccount] -= mennyitbe;
+					lsgyarpenzbent += mennyitbe;
+				}
+				if(egyezik(param[3], "muanyag") || egyezik(param[3], "műanyag"))
+				{
+					if(params < 4) return Msg(playerid, "/terület fejlesztésbe lsgyár műanyag [mennyit]");
+					if(mennyitbe > PlayerInfo[playerid][pMuanyag]) return Msg(playerid, COLOR_LIGHTRED, "Nincs ennyi műanyag nálad!");
+					new kulonbseg = lsgyarmuanyagar-lsgyarmuanyagbent;
+					
+					if(mennyitbe > kulonbseg)
+					{
+						if(kulonbseg < 0) return Msg(playerid, "Fejleszthető a terület! (/terület fejlesztés)");
+						SendFormatMessage(playerid, COLOR_LIGHTRED, "[Terület]: Nincs szükség ennyi műanyagra! (Szükséges: %ddb)", kulonbseg);
+					}
+					
+					SendFormatMessage(playerid, COLOR_LIGHTGREEN, "[Terület]: Sikeresen beraktál %ddb műanyagot a területbe. (Műanyag mennyiség: %ddb)", mennyitbe, lsgyarmuanyagbent);
+					PlayerInfo[playerid][pMuanyag] -= mennyitbe;
+					lsgyarmuanyagbent += mennyitbe;
+				}
+			}
+		}
+	}
